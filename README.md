@@ -36,21 +36,15 @@ Lihat detail lengkap di file `report.pdf`
 
 ```mermaid
 flowchart TD
-    A[Candidate Email (CV PDF)] --> B[Email Trigger (IMAP - n8n)]
-    B --> C[CV Extraction and Parsing]
+    A[Candidate Email] --> B[Email Trigger]
+    B --> C[CV Parsing]
+    C --> D[AI Classification]
+    D --> E[Scoring]
+    E --> F{Decision}
 
-    C -->|Success| D[AI Classification]
-    C -->|Fail| X[Log Error]
+    F -->|Pass| G[Interview Email]
+    F -->|Fail| H[Rejection Email]
 
-    D --> E[Candidate Scoring]
-    E --> F{Decision Engine}
-
-    F -->|Qualified| G[Send Interview Invitation]
-    F -->|Not Qualified| H[Send Rejection Email]
-
-    G --> I[Store to Google Sheets]
+    G --> I[Store Data]
     H --> I
-
-    I --> J[Logging and Monitoring]
-
     I --> J[📈 Logging & Monitoring]
