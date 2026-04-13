@@ -32,24 +32,25 @@ Email → n8n → CV Parsing → AI Classification → Scoring → Auto Response
 ## 📄 Documentation
 Lihat detail lengkap di file `report.pdf`
 
-## Solution
 ## 🧠 Workflow Architecture
 
 ```mermaid
 flowchart TD
-    A[📩 Candidate Email (CV PDF)] --> B[📥 Email Trigger (IMAP - n8n)]
-    B --> C[📄 CV Extraction & Parsing]
+    A[Candidate Email (CV PDF)] --> B[Email Trigger (IMAP - n8n)]
+    B --> C[CV Extraction and Parsing]
 
-    C -->|Success| D[🧠 AI Classification]
-    C -->|Fail| X[❌ Log Error]
+    C -->|Success| D[AI Classification]
+    C -->|Fail| X[Log Error]
 
-    D --> E[📊 Candidate Scoring]
-    E --> F{⚖️ Decision Engine}
+    D --> E[Candidate Scoring]
+    E --> F{Decision Engine}
 
-    F -->|Qualified| G[✉️ Interview Invitation]
-    F -->|Not Qualified| H[✉️ Rejection Email]
+    F -->|Qualified| G[Send Interview Invitation]
+    F -->|Not Qualified| H[Send Rejection Email]
 
-    G --> I[📊 Store to Google Sheets]
+    G --> I[Store to Google Sheets]
     H --> I
+
+    I --> J[Logging and Monitoring]
 
     I --> J[📈 Logging & Monitoring]
