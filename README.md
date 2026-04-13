@@ -30,7 +30,8 @@ Email → n8n → CV Parsing → AI Classification → Scoring → Auto Response
 - Respon kandidat lebih cepat
 
 ## 📄 Documentation
-Lihat detail lengkap di file `report.pdf`
+Full documentation available here:
+[Download Report](./AI_Email_Automation_HRD_Report.pdf)
 
 ## 🧠 Workflow Architecture
 
