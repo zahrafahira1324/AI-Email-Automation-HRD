@@ -32,5 +32,24 @@ Email → n8n → CV Parsing → AI Classification → Scoring → Auto Response
 ## 📄 Documentation
 Lihat detail lengkap di file `report.pdf`
 
-## ⚠️ Note
-Project ini merupakan bagian dari internship dan dikembangkan sebagai Proof of Concept (PoC).
+## Solution
+## 🧠 Workflow Architecture
+
+```mermaid
+flowchart TD
+    A[📩 Candidate Email (CV PDF)] --> B[📥 Email Trigger (IMAP - n8n)]
+    B --> C[📄 CV Extraction & Parsing]
+
+    C -->|Success| D[🧠 AI Classification]
+    C -->|Fail| X[❌ Log Error]
+
+    D --> E[📊 Candidate Scoring]
+    E --> F{⚖️ Decision Engine}
+
+    F -->|Qualified| G[✉️ Interview Invitation]
+    F -->|Not Qualified| H[✉️ Rejection Email]
+
+    G --> I[📊 Store to Google Sheets]
+    H --> I
+
+    I --> J[📈 Logging & Monitoring]
